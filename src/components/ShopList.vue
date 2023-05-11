@@ -24,9 +24,3 @@ onMounted(() => {
   store.fetchProducts();
 });
 </script>
-
-<style lang="scss" scoped>
-.shopList {
-  padding-top: 50px;
-}
-</style>
