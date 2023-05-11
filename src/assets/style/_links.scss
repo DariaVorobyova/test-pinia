@@ -1,0 +1,17 @@
+.link {
+    display: flex;
+    align-items: center;
+    color: var(--main-color);
+    font-size: $font-size-base;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    svg {
+        width: 25px;
+        margin-right: 4px;
+    }
+
+    &:hover {
+        color: var(--main-color);
+    }
+}
