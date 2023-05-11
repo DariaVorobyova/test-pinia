@@ -1,18 +1,34 @@
 <script setup>
 import ShopList from "./../components/ShopList.vue";
+import { onMounted } from "vue";
+
+onMounted(() => {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+  });
+});
 </script>
 
 <template>
-  <div class="main-banner">
+  <div class="main-banner" id="top">
     <el-container class="container">
       <div class="main-content">
         <p class="main-title">Welcome to Citrus</p>
         <p class="main-subtitle">Lets start spring sale</p>
-        <a href="#scrolled" class="button app-btn">Shop now</a>
+        <el-link href="#scrolled" class="button">Shop now</el-link>
       </div>
     </el-container>
   </div>
-  <el-main id="scrolled">
+  <el-main class="main-shop" id="scrolled">
+    <el-link href="#top" class="button back-btn">
+      Back to top <el-icon-top />
+    </el-link>
     <ShopList />
   </el-main>
 </template>
@@ -21,7 +37,7 @@ import ShopList from "./../components/ShopList.vue";
 .main-banner {
   position: relative;
   min-height: 800px;
-  background-image: url('@/assets/images/main-bg.jpeg');
+  background-image: url("@/assets/images/main-bg.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -29,7 +45,7 @@ import ShopList from "./../components/ShopList.vue";
   &::after {
     position: absolute;
     z-index: 1;
-    content: '';
+    content: "";
     width: 100%;
     height: 100%;
     left: 0;
@@ -63,5 +79,23 @@ import ShopList from "./../components/ShopList.vue";
   font-size: 2rem;
   line-height: 1.25em;
   font-weight: 600;
+}
+
+.main-shop {
+  position: relative;
+  overflow: initial !important;
+}
+
+.back-btn {
+  margin-right: 20px;
+  position: sticky;
+  z-index: 3;
+  top: 0;
+  right: 0;
+
+  svg {
+    width: 16px;
+    margin-left: 4px;
+  }
 }
 </style>

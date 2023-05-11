@@ -10,7 +10,8 @@ const data = useShoppingStore();
       <el-col span="12">
         <RouterLink class="link" to="/">Citrus</RouterLink>
       </el-col>
-      <el-col span="12">
+      <el-col span="12" class="app-links">
+        <RouterLink class="link" to="/">Home</RouterLink>
         <RouterLink class="link" to="cart"><el-icon-goods />({{ data.countCartItems }})</RouterLink>
       </el-col>
     </el-row>
@@ -31,5 +32,16 @@ const data = useShoppingStore();
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.app-links {
+  display: flex;
+  align-items: center;
+
+  a {
+    &:first-child {
+      margin-right: 1rem;
+    }
+  }
 }
 </style>
